@@ -270,7 +270,7 @@ a { color: var(--teal); }
 .mapa-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .mapa-meta { margin: 0; padding: 0.85rem 1rem; font-size: 0.92rem; color: var(--gris); font-weight: 600; }
 
-.cita { padding: 2.75rem 0 3.25rem; }
+.cita { padding: 2.75rem 0 3.25rem; background: var(--papel); }
 .cita-layout { display: grid; gap: 1.5rem; }
 .cita-horario { margin-top: 0.9rem !important; color: var(--carbon) !important; font-weight: 600; }
 .cita-form {
@@ -548,3 +548,96 @@ a { color: var(--teal); }
     transition: none;
   }
 }
+
+.cita {
+  padding: 2.75rem 0 3.25rem;
+  background: var(--papel);
+}
+.cita-intro {
+  display: grid;
+  gap: 1.15rem;
+  align-content: start;
+}
+.cita-steps {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.cita-steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(26, 31, 36, 0.08);
+  box-shadow: 0 4px 14px rgba(26, 31, 36, 0.04);
+}
+.cita-step-num {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 110, 138, 0.12);
+  color: var(--teal);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.cita-steps strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.98rem;
+}
+.cita-steps p {
+  margin: 0;
+  color: var(--gris);
+  font-size: 0.9rem;
+}
+.cita-facts {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: 1fr 1fr;
+}
+.cita-fact {
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(26, 31, 36, 0.08);
+}
+.cita-fact-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-bottom: 0.2rem;
+}
+.cita-fact-value {
+  font-weight: 700;
+  color: var(--carbon);
+  text-decoration: none;
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+a.cita-fact-value { color: var(--teal); }
+a.cita-fact-value:hover { text-decoration: underline; }
+.cita-side-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+@media (min-width: 720px) {
+  .cita-layout {
+    align-items: stretch;
+  }
+  .cita-intro {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+  }
+}
+
