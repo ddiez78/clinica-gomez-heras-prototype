@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 112" role="img" aria-label="Clínica Dental Gómez Heras">
+  <g fill="none" fill-rule="evenodd">
+    <path d="M34 20c18-14 42-14 56 2 8 9 10 22 6 34-3 10-11 18-21 22" stroke="#0B6E8A" stroke-width="10" stroke-linecap="round"/>
+    <path d="M78 22c14 12 18 34 8 52-6 10-16 16-28 18" stroke="#7BA88A" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <line x1="118" y1="22" x2="118" y2="90" stroke="#D5DBE0" stroke-width="2"/>
+  <text x="136" y="38" font-family="Manrope, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#5C6570">CLÍNICA DENTAL</text>
+  <text x="136" y="72" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#1A1F24">Gómez Heras</text>
+  <text x="136" y="94" font-family="Manrope, Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#7A8A96">Dr. Domingo Gómez De Las Heras</text>
+</svg>
