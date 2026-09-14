@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="GH">
-  <path d="M28 18c18-14 42-14 56 2 8 9 10 22 6 34-3 10-11 18-21 22" fill="none" stroke="#0B6E8A" stroke-width="10" stroke-linecap="round"/>
-  <path d="M72 20c14 12 18 34 8 52-6 10-16 16-28 18" fill="none" stroke="#7BA88A" stroke-width="10" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Gómez Heras">
+  <title>Marca Gómez Heras</title>
+  <!-- G outer arc (teal) -->
+  <path d="M96 60a36 36 0 1 1-10.5-25.5" fill="none" stroke="#0B6E8A" stroke-width="14" stroke-linecap="round"/>
+  <!-- H left stem inside G (teal) -->
+  <path d="M52 34v52" fill="none" stroke="#0B6E8A" stroke-width="12" stroke-linecap="round"/>
+  <!-- H crossbar + right stem (sage), right stem longer -->
+  <path d="M52 60h28M80 34v62" fill="none" stroke="#7BA88A" stroke-width="12" stroke-linecap="round"/>
 </svg>
