@@ -37,31 +37,24 @@
     });
   }
 
-  // Elastic gallery (desktop accordion / mobile snap)
+  // Elastic gallery — parity with React ElasticGallery
   const gallery = document.querySelector('.elastic-gallery');
   if (gallery) {
     const cards = Array.from(gallery.querySelectorAll('.elastic-card'));
-    const mq = window.matchMedia('(max-width: 720px)');
-    const activate = (card, scrollInto = false) => {
+    const activate = (card) => {
       cards.forEach((c) => {
         const on = c === card;
         c.classList.toggle('is-active', on);
         c.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
-      if (scrollInto && mq.matches) {
-        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      }
     };
     cards.forEach((card) => {
-      card.addEventListener('mouseenter', () => {
-        if (!mq.matches) activate(card);
-      });
-      card.addEventListener('focus', () => activate(card, true));
+      card.addEventListener('mouseenter', () => activate(card));
+      card.addEventListener('focus', () => activate(card));
       card.addEventListener('click', (e) => {
         if (e.target.closest('.elastic-cta')) return;
-        activate(card, true);
+        activate(card);
       });
     });
   }
-
 })();
