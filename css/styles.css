@@ -374,7 +374,8 @@ a { color: var(--teal); }
   .trat-card:nth-child(4), .trat-card:nth-child(5) { grid-column: span 1; }
 }
 
-/* Elastic Gallery — tratamientos */
+
+/* Elastic Gallery — parity with React ElasticGallery */
 .trat-hint {
   margin: 0 0 0.85rem;
   font-size: 0.9rem;
@@ -382,120 +383,168 @@ a { color: var(--teal); }
 }
 .elastic-gallery {
   display: flex;
-  gap: 0.65rem;
-  height: min(52vh, 420px);
-  min-height: 280px;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 500px;
   width: 100%;
   overflow: hidden;
 }
 .elastic-card {
   position: relative;
-  flex: 0.7;
+  flex: 1;
   border: 0;
   padding: 0;
   margin: 0;
   border-radius: 1rem;
   overflow: hidden;
   cursor: pointer;
-  background: #111;
+  background: #0b1216;
   color: #fff;
-  transition: flex 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  min-width: 3.25rem;
+  filter: brightness(0.55);
+  transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s cubic-bezier(0.25, 1, 0.5, 1);
   text-align: left;
+  min-height: 0;
 }
-.elastic-card.is-active { flex: 4.2; }
+.elastic-card:hover { filter: brightness(0.75); }
+.elastic-card.is-active {
+  flex: 4;
+  filter: brightness(1);
+}
 .elastic-card img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transform: scale(1.04);
-  transition: transform 0.45s ease;
+  transform: scale(1.1);
+  transition: transform 1s ease;
 }
 .elastic-card.is-active img { transform: scale(1); }
-.elastic-overlay {
+.elastic-shade {
   position: absolute;
-  inset: auto 0 0 0;
-  padding: 1rem 1.1rem 1.15rem;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 45%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.elastic-card.is-active .elastic-shade { opacity: 1; }
+.elastic-active-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.35rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.72) 55%, rgba(0,0,0,.9) 100%);
+  gap: 0.4rem;
+  padding: 1rem 1.1rem 1.2rem;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(1.5rem);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  transition-delay: 0s;
   pointer-events: none;
 }
-.elastic-card.is-active .elastic-overlay {
+.elastic-card.is-active .elastic-active-content {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: 0.15s;
   pointer-events: auto;
 }
 .elastic-chip {
   display: inline-flex;
-  padding: 0.2rem 0.55rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 999px;
-  background: rgba(11, 110, 138, 0.95);
-  font-size: 0.72rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .elastic-title {
-  font-size: clamp(1rem, 2.4vw, 1.35rem);
+  font-size: clamp(1.15rem, 3.5vw, 1.85rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 .elastic-desc {
   font-size: 0.9rem;
   line-height: 1.4;
   color: rgba(255,255,255,0.88);
-  max-width: 28ch;
+  max-width: 36ch;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
 }
 .elastic-cta {
-  margin-top: 0.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.elastic-cta:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.elastic-idle-label {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: 0.35s;
+  pointer-events: none;
+}
+.elastic-card.is-active .elastic-idle-label {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.6);
+  transition-delay: 0s;
+}
+.elastic-idle-id {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
-.elastic-cta:hover { color: #c9ebe0; }
-@media (max-width: 720px) {
+.elastic-idle-title { display: none; }
+
+@media (min-width: 768px) {
   .elastic-gallery {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(82%, 320px);
-    gap: 0.75rem;
-    height: auto;
-    min-height: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 1rem;
-    padding-bottom: 0.35rem;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    padding-inline: 0;
+    flex-direction: row;
+    height: 600px;
+    gap: 1rem;
   }
-  .elastic-card {
-    flex: none !important;
-    width: auto;
-    height: 16rem;
-    min-width: 0;
-    scroll-snap-align: center;
-    transition: none;
+  .elastic-active-content { padding: 1.5rem 1.75rem 1.75rem; }
+  .elastic-title { font-size: clamp(1.6rem, 2.4vw, 2.6rem); }
+  .elastic-idle-label {
+    bottom: 2rem;
   }
-  .elastic-card.is-active { height: 16rem; }
-  .elastic-overlay {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
+  .elastic-idle-id { display: none; }
+  .elastic-idle-title {
+    display: block;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
   }
-  .elastic-card img { transform: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .elastic-card, .elastic-card img, .elastic-overlay { transition: none; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .elastic-card, .elastic-card img, .elastic-shade, .elastic-active-content, .elastic-idle-label {
+    transition: none;
+  }
+}
